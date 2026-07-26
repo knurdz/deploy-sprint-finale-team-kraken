@@ -1,0 +1,16 @@
+# Docker Compose runtime configuration
+# Project: deploy-sprint-kraken (T22)
+name: deploy-sprint-kraken
+
+services:
+  team-site:
+    image: deploy-sprint/team-site:${APP_VERSION:-latest}
+    build:
+      context: ./team-site
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:80"
+    env_file:
+      - .env
+    environment:
+      - APP_VERSION=${APP_VERSION:-latest}
