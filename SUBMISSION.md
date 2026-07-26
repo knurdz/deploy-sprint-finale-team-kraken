@@ -45,8 +45,8 @@ Use this section for short public notes and links. Full task instructions and ch
 | T13 | #17 | Integrated ReleaseReadiness component & validation script | Temporary review-tracking text cleaned up before merge, validation script passes, build succeeds |
 | T14 | #18 | team-site/Dockerfile (multi-stage: node:20-alpine build, nginx:alpine serve), .github/workflows/docker-build.yml builds deploy-sprint/kraken:<commit SHA> and records digest in step summary | Verified locally with real Docker: build succeeded, container served the actual site (HTTP 200) |
 | T15 | TBD | /status JSON features flag | Implemented runtime feature flag for LearningVelocity component via Vite env var |
-| T16 |  |  |  |
-| T17 |  |  |  |
+| T16 |     |  |  |
+| T17 |     |  |  |
 | T18 | #27 | docker-build.yml & deploy.yml container evidence | Containerized application deployed via GitHub Actions |
 | T19 | #25 | .github/workflows/smoke-test.yml checks /, /health, /status and fails on bad response. Debug run (PUBLIC_URI/PUBLIC_URL mismatch): visible in PR #25 checks history. Passing run: https://github.com/knurdz/deploy-sprint-finale-team-kraken/actions/runs/30197818502/job/89782390724?pr=25 | Ran starter as-provided first (failed as designed - PUBLIC_URI required), diagnosed the PUBLIC_URI/PUBLIC_URL name mismatch, fixed it, reran and passed against live site |
 | T20 |  |  |  |
