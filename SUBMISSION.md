@@ -42,7 +42,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T10 |  |  |  |
 | T11 | (TBD - PR not yet opened) | .github/workflows/pr-preview.yml runs on every pull_request, builds team-site, uploads artifact named pr-preview-<PR number>-<commit SHA>, writes GITHUB_STEP_SUMMARY with PR/commit info | Separate workflow file from ci.yml/deploy.yml so preview evidence never touches production deploy logic. |
 | T12 | #8 | cache: npm + cache-dependency-path in ci.yml | npm ci preserved, lockfile-keyed cache already in place |
-| T13 | TBD | Integrated ReleaseReadiness component & validation script | AI markers removed, validation script passes, build succeeds |
+| T13 | #17 | Integrated ReleaseReadiness component & validation script | AI markers removed, validation script passes, build succeeds |
 | T14 |  |  |  |
 | T15 |  |  |  |
 | T16 |  |  |  |
