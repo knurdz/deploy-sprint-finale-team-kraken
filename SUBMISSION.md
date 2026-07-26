@@ -38,7 +38,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T06 | #5 | site-dist artifact with npm ci | Workflow correctly configured |
 | T07 | #6 | /api/weather endpoint & WeatherWidget | Fetched server-side, secret secured |
 | T08 | #7 | LearningVelocity component & clean rebase | Cherry-picked dda6b34 from task-assets/rebase-feature |
-| T09 | TBD | PR Diff | Resolved conflict manually keeping both intended changes |
+| T09 | #16 | PR Diff | Resolved conflict manually keeping both intended changes |
 | T10 |  |  |  |
 | T11 |  |  |  |
 | T12 |  |  |  |
