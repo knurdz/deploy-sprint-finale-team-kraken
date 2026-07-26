@@ -33,7 +33,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T01 | #3 | /status and /health endpoints | Live on IP |
 | T02 |  |  |  |
 | T03 |  |  |  |
-| T04 |  |  |  |
+| T04 | #3 | rollback.yml run + resolved SHA in job summary | Manual rollback via workflow_dispatch, release_ref input |
 | T05 |  |  |  |
 | T06 | #5 | site-dist artifact with npm ci | Workflow correctly configured |
 | T07 |  |  |  |
