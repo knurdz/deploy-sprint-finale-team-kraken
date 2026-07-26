@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
  * gen-status.mjs
- * Run before `vite build` to write public/status.json
- * with commit SHA, deploy time, release ID, and T01 marker.
+ * Run before `vite build` to write public/health/index.html and
+ * public/status/index.html with commit SHA, deploy time, release ID, and T01 marker.
  */
 
 import fs from 'fs';
@@ -22,14 +22,15 @@ const status = {
   branch: process.env.VITE_BRANCH || process.env.GITHUB_REF_NAME || 'unknown',
 };
 
-fs.mkdirSync(publicDir, { recursive: true });
 const content = JSON.stringify(status, null, 2) + '\n';
 
-// /status  — required by task (no extension, HTTP 200 with JSON body)
-fs.writeFileSync(path.join(publicDir, 'status'), content, 'utf8');
+// /health — served as directory index, displays in browser
+fs.mkdirSync(path.join(publicDir, 'health'), { recursive: true });
+fs.writeFileSync(path.join(publicDir, 'health', 'index.html'), 'ok\n', 'utf8');
 
-// /status.json — displays in browser without download (Nginx knows .json MIME type)
-fs.writeFileSync(path.join(publicDir, 'status.json'), content, 'utf8');
+// /status — served as directory index, displays in browser
+fs.mkdirSync(path.join(publicDir, 'status'), { recursive: true });
+fs.writeFileSync(path.join(publicDir, 'status', 'index.html'), content, 'utf8');
 
-console.log('Generated public/status and public/status.json:', status);
+console.log('Generated public/health/index.html and public/status/index.html:', status);
 

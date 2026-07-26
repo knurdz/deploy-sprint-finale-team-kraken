@@ -35,9 +35,25 @@ jobs:
         run: npm run build:ci
         working-directory: team-site
 
+      - name: Write health and status evidence
+        env:
+          TEAM_NAME: ${{ vars.TEAM_NAME || 'KRAKEN' }}
+          PUBLIC_URL: ${{ vars.PUBLIC_URL || vars.IP_PUBLIC_URL || '' }}
+        run: |
+          rm -rf team-site/dist/health team-site/dist/status
+          mkdir -p team-site/dist/health team-site/dist/status
+          printf 'ok' > team-site/dist/health/index.html
+          printf '{"team":"%s","task":"T01","commitSha":"%s","releaseId":"%s","deployTime":"%s","publicUrl":"%s","branch":"%s"}' \
+            "$TEAM_NAME" \
+            "$GITHUB_SHA" \
+            "$GITHUB_RUN_ID" \
+            "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            "$PUBLIC_URL" \
+            "$GITHUB_REF_NAME" \
+            > team-site/dist/status/index.html
+
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
         with:
           name: site-dist-${{ github.sha }}
           path: team-site/dist
-
