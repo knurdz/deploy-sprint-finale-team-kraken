@@ -26,8 +26,13 @@ jobs:
 
       - name: Build
         env:
-          VITE_PUBLIC_URL: ${{ vars.PUBLIC_URL || vars.DOMAIN_PUBLIC_URL || secrets.PUBLIC_URL || vars.IP_PUBLIC_URL }}
-        run: npm run build
+          VITE_COMMIT_SHA: ${{ github.sha }}
+          VITE_RELEASE_ID: ${{ github.run_id }}
+          VITE_DEPLOY_TIME: ${{ github.event.head_commit.timestamp }}
+          VITE_TEAM_NAME: "Team Kraken"
+          VITE_BRANCH: ${{ github.ref_name }}
+          VITE_PUBLIC_URL: ${{ vars.PUBLIC_URL || vars.IP_PUBLIC_URL || vars.DOMAIN_PUBLIC_URL || '' }}
+        run: npm run build:ci
         working-directory: team-site
 
       - name: Upload dist artifact
@@ -35,3 +40,4 @@ jobs:
         with:
           name: site-dist-${{ github.sha }}
           path: team-site/dist
+
