@@ -123,7 +123,7 @@ button {
 
 .topbar {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 360px) auto 44px;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 360px) 44px;
   align-items: center;
   gap: 16px;
 }
@@ -269,6 +269,48 @@ h3 {
   border-top: 4px solid #4c7bd9;
 }
 
+.velocityBand {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 18px;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #cfdac4;
+  border-radius: 8px;
+  background: #eff7df;
+}
+
+.velocityBand h2 {
+  max-width: 620px;
+}
+
+.velocityBand p {
+  max-width: 640px;
+  margin: 10px 0 0;
+  color: #526057;
+  line-height: 1.55;
+}
+
+.velocityMeter {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 18px;
+  border-radius: 8px;
+  background: #17201b;
+  color: #f7f3eb;
+  text-align: center;
+}
+
+.velocityMeter strong {
+  font-size: 2.2rem;
+}
+
+.velocityMeter span {
+  color: #d9f275;
+  font-weight: 800;
+}
+
 .contentGrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 380px;
@@ -371,7 +413,8 @@ h3 {
 @media (max-width: 980px) {
   .shell,
   .contentGrid,
-  .heroBand {
+  .heroBand,
+  .velocityBand {
     grid-template-columns: 1fr;
   }
 
@@ -407,46 +450,4 @@ h3 {
   .deadline {
     white-space: normal;
   }
-}
-
-/* ── Weather Widget ─────────────────────────────────────────── */
-.weatherWidget {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: #19241f;
-  color: #f7f3eb;
-  font-size: 0.82rem;
-  white-space: nowrap;
-}
-
-.weatherInfo {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.weatherTemp {
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.weatherCity {
-  font-size: 0.72rem;
-  opacity: 0.7;
-}
-
-.weatherMeta {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  opacity: 0.75;
-  font-size: 0.72rem;
-}
-
-.weatherLoading,
-.weatherError {
-  opacity: 0.6;
 }

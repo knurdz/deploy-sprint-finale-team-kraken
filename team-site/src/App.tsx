@@ -9,9 +9,9 @@ import {
   ShieldCheck,
   Users,
 } from 'lucide-react';
-import { WeatherWidget } from './components/WeatherWidget';
 import { CourseCard } from './components/CourseCard';
 import { DeadlineBoard } from './components/DeadlineBoard';
+import { LearningVelocity } from './components/LearningVelocity';
 import { StatCard } from './components/StatCard';
 import { courses } from './data/courses';
 import { deadlineCards } from './data/deadlines';
@@ -71,7 +71,6 @@ export function App() {
             <input aria-label="Search courses" placeholder="Search courses" />
           </label>
 
-          <WeatherWidget />
           <button className="iconButton" aria-label="Notifications">
             <Bell size={20} />
           </button>
@@ -97,6 +96,8 @@ export function App() {
             <StatCard key={stat.label} stat={stat} />
           ))}
         </section>
+
+        <LearningVelocity courses={courses} />
 
         <section className="contentGrid">
           <div className="panel" id="courses">
