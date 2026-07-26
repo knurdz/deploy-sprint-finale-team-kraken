@@ -1,4 +1,3 @@
-// AI-REVIEW-MARKER: participant must manually remove this marker
 import { useState } from 'react';
 import {
   Mail,
