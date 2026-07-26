@@ -32,15 +32,15 @@ Use this section for short public notes and links. Full task instructions and ch
 | --- | --- | --- | --- |
 | T01 | #3 | /status and /health endpoints | Live on IP |
 | T02 | #9 | A/TXT records live in DNS, HTTP 200 on domain + raw IP, dist/domain-status.json shows domain.connected=true (assignedDomain field) | DNS confirmed via nslookup (A -> 4.246.121.59, TXT -> deploy-sprint-kraken). HTTPS not live as of this evidence; flagged to organizers as infra-side TLS provisioning gap. |
-| T03 | TBD | /release-candidate/artifact.json | Added deploy-dry-run job in CI that reuses the artifact |
+| T03 | #10 | /release-candidate/artifact.json | Added deploy-dry-run job in CI that reuses the artifact |
 | T04 | #3 | rollback.yml run + resolved SHA in job summary | Manual rollback via workflow_dispatch, release_ref input |
 | T05 | #12 | PUBLIC_URL sourced from GitHub Secret + repo variable, ci.yml already references secrets.PUBLIC_URL fallback, dist/config-status.json shows publicUrlConfigured=true | No raw config values hardcoded in source (verified via git grep); config-status.json exposes only a boolean, never the actual URL value. |
 | T06 | #5 | site-dist artifact with npm ci | Workflow correctly configured |
 | T07 | #6 | /api/weather endpoint & WeatherWidget | Fetched server-side, secret secured |
 | T08 | #7 | LearningVelocity component & clean rebase | Cherry-picked dda6b34 from task-assets/rebase-feature |
 | T09 | #16 | PR Diff | Resolved conflict manually keeping both intended changes |
-| T10 |  |  |  |
-| T11 | (TBD - PR not yet opened) | .github/workflows/pr-preview.yml runs on every pull_request, builds team-site, uploads artifact named pr-preview-<PR number>-<commit SHA>, writes GITHUB_STEP_SUMMARY with PR/commit info | Separate workflow file from ci.yml/deploy.yml so preview evidence never touches production deploy logic. |
+| T10 | #20 | ContactForm component & /status evidence | Integrated Web3Forms contact form service |
+| T11 | #14 | .github/workflows/pr-preview.yml runs on every pull_request, builds team-site, uploads artifact named pr-preview-<PR number>-<commit SHA>, writes GITHUB_STEP_SUMMARY with PR/commit info | Separate workflow file from ci.yml/deploy.yml so preview evidence never touches production deploy logic. |
 | T12 | #8 | cache: npm + cache-dependency-path in ci.yml | npm ci preserved, lockfile-keyed cache already in place |
 | T13 | #17 | Integrated ReleaseReadiness component & validation script | AI markers removed, validation script passes, build succeeds |
 | T14 |  |  |  |

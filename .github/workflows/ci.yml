@@ -33,6 +33,7 @@ jobs:
           VITE_BRANCH: ${{ github.ref_name }}
           VITE_PUBLIC_URL: ${{ vars.PUBLIC_URL || secrets.PUBLIC_URL || vars.IP_PUBLIC_URL || secrets.IP_PUBLIC_URL || vars.DOMAIN_PUBLIC_URL || secrets.DOMAIN_PUBLIC_URL || '' }}
           VITE_FEATURE_SHOW_INSIGHTS: ${{ secrets.FEATURE_SHOW_INSIGHTS || 'false' }}
+          VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: npm run build
         working-directory: team-site
 
@@ -41,11 +42,20 @@ jobs:
           TEAM_NAME: ${{ vars.TEAM_NAME || 'KRAKEN' }}
           PUBLIC_URL: ${{ vars.PUBLIC_URL || vars.IP_PUBLIC_URL || '' }}
           FEATURE_SHOW_INSIGHTS: ${{ secrets.FEATURE_SHOW_INSIGHTS || 'false' }}
+          WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: |
           rm -rf team-site/dist/health team-site/dist/status
           mkdir -p team-site/dist/health team-site/dist/status
           printf 'ok' > team-site/dist/health/index.html
           printf '{"team":"%s","task":"T01","commitSha":"%s","releaseId":"%s","deployTime":"%s","publicUrl":"%s","branch":"%s","weather":{"provider":"openweather","city":"Colombo","keyExposed":false},"features":{"task":"T15","showInsights":%s,"valueRedacted":true}}' \
+
+          if [ -n "${WEB3FORMS_ACCESS_KEY:-}" ]; then
+            CONTACT_CONFIGURED=true
+          else
+            CONTACT_CONFIGURED=false
+          fi
+
+          printf '{"team":"%s","task":"T01","commitSha":"%s","releaseId":"%s","deployTime":"%s","publicUrl":"%s","branch":"%s","weather":{"provider":"openweather","city":"Colombo","keyExposed":false},"contactForm":{"provider":"web3forms","accessKeyConfigured":%s,"keyExposed":false}}' \
             "$TEAM_NAME" \
             "$GITHUB_SHA" \
             "$GITHUB_RUN_ID" \
@@ -53,6 +63,7 @@ jobs:
             "$PUBLIC_URL" \
             "$GITHUB_REF_NAME" \
             "$FEATURE_SHOW_INSIGHTS" \
+            "$CONTACT_CONFIGURED" \
             > team-site/dist/status/index.html
 
       - name: Fetch weather data (server-side only)
@@ -110,4 +121,5 @@ jobs:
 
       - name: Record artifact identity
         run: |
+
           printf '{"task":"T03","artifact":"site-dist-%s"}' "$GITHUB_SHA" > release-candidate/artifact.json
