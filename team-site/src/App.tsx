@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Users,
 } from 'lucide-react';
+import { WeatherWidget } from './components/WeatherWidget';
 import { CourseCard } from './components/CourseCard';
 import { DeadlineBoard } from './components/DeadlineBoard';
 import { LearningVelocity } from './components/LearningVelocity';
@@ -71,6 +72,7 @@ export function App() {
             <input aria-label="Search courses" placeholder="Search courses" />
           </label>
 
+          <WeatherWidget />
           <button className="iconButton" aria-label="Notifications">
             <Bell size={20} />
           </button>
