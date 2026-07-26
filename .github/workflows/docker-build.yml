@@ -20,9 +20,29 @@ jobs:
       - name: Record image evidence
         run: |
           {
-            echo "## T18 Containerized VPS Deploy Evidence"
+            echo "## T14 Docker Build"
             echo ""
-            echo "- Image: deploy-sprint/team-site:${{ github.sha }}"
-            echo "- Digest: $(docker image inspect deploy-sprint/team-site:${{ github.sha }} --format '{{.Id}}')"
+            echo "- Image: deploy-sprint/kraken:${{ github.sha }}"
+            echo "- Digest: $(docker image inspect deploy-sprint/kraken:${{ github.sha }} --format '{{.Id}}')"
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Validate Compose config (T22)
+        env:
+          COMPOSE_PROJECT_NAME: deploy-sprint-kraken
+        run: |
+          cp .env.template .env
+          docker compose config --quiet
+          echo "Compose config is valid"
+
+      - name: Record Compose evidence (T22)
+        env:
+          COMPOSE_PROJECT_NAME: deploy-sprint-kraken
+        run: |
+          {
+            echo "## T22 Compose Runtime Service"
+            echo ""
+            echo "- Project: deploy-sprint-kraken"
+            echo "- Compose file: docker-compose.yml"
+            echo "- Env template: .env.template (placeholders only, no real secrets)"
+            docker compose config --quiet && echo "- Config validation: passed" || echo "- Config validation: failed"
+          } >> "$GITHUB_STEP_SUMMARY"
