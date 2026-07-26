@@ -40,6 +40,7 @@ jobs:
           TEAM_NAME: ${{ vars.TEAM_NAME || 'KRAKEN' }}
           PUBLIC_URL: ${{ vars.PUBLIC_URL || vars.IP_PUBLIC_URL || '' }}
         run: |
+          rm -rf team-site/dist/health team-site/dist/status
           mkdir -p team-site/dist/health team-site/dist/status
           printf 'ok' > team-site/dist/health/index.html
           printf '{"team":"%s","task":"T01","commitSha":"%s","releaseId":"%s","deployTime":"%s","publicUrl":"%s","branch":"%s"}' \
