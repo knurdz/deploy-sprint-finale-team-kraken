@@ -33,7 +33,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T01 | #3 | /status and /health endpoints | Live on IP |
 | T02 | (TBD - PR not yet opened) | A/TXT records live in DNS, HTTP 200 on domain + raw IP, dist/domain-status.json shows domain.connected=true | DNS confirmed via nslookup (A -> 4.246.121.59, TXT -> deploy-sprint-kraken). HTTPS not yet live at time of writing; flagged to organizers as likely infra-side TLS provisioning delay. |
 | T03 |  |  |  |
-| T04 |  |  |  |
+| T04 | #3 | rollback.yml run + resolved SHA in job summary | Manual rollback via workflow_dispatch, release_ref input |
 | T05 |  |  |  |
 | T06 | #5 | site-dist artifact with npm ci | Workflow correctly configured |
 | T07 | #6 | /api/weather endpoint & WeatherWidget | Fetched server-side, secret secured |
@@ -64,3 +64,5 @@ Use this section for short public notes and links. Full task instructions and ch
 ## Public Notes
 
 List anything judges should know without exposing credentials or private infrastructure details.
+
+
