@@ -46,7 +46,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T14 |  |  |  |
 | T15 | TBD | /status JSON features flag | Implemented runtime feature flag for LearningVelocity component via Vite env var |
 | T16 |  |  |  |
-| T17 |  |  |  |
+| T17 | PR | Evidence | Added a `deploy.sh` script implementing a blue-green symlink release strategy. It extracts the release to a unique directory, performs a curl health check, and only updates the `current` symlink if the check passes. |
 | T18 |  |  |  |
 | T19 |  |  |  |
 | T20 |  |  |  |
