@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Mail,
   User,
@@ -13,6 +13,17 @@ import {
 
 export function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+
+  // Load Cloudflare Turnstile script once (T24 — public site key only, never secret key)
+  useEffect(() => {
+    if (!document.querySelector('script[src*="turnstile"]')) {
+      const s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      s.async = true;
+      s.defer = true;
+      document.head.appendChild(s);
+    }
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -130,6 +141,17 @@ export function ContactForm() {
               />
             </div>
           </div>
+
+          {/* Cloudflare Turnstile widget — site key is public, secret key stays server-side */}
+          <div
+            className="cf-turnstile"
+            data-sitekey={
+              import.meta.env.VITE_TURNSTILE_SITE_KEY ||
+              '0x4AAAAAAAplaceholder-replace-me'
+            }
+            data-theme="auto"
+            data-size="normal"
+          />
 
           <button type="submit" className="submitBtn" disabled={status === 'sending'}>
             {status === 'sending' ? (

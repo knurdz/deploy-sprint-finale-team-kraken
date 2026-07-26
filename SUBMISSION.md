@@ -53,7 +53,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T21 | #30 | deploy.yml concurrency and permissions blocks | Updated deploy.yml to use the 'deploy-kraken-production' concurrency group with cancel-in-progress: false to queue deployments safely. Enforced least-privilege by setting explicit read-only permissions and verified no workflows use the unsafe pull_request_target trigger. |
 | T22 |     |  |  |
 | T23 |     |  |  |
-| T24 |     |  |  |
+| T24 | TBD | Turnstile widget in ContactForm + /api/turnstile-status evidence | VITE_TURNSTILE_SITE_KEY (public) in build, TURNSTILE_SECRET_KEY server-only via GitHub Secrets, provider=cloudflare-turnstile |  |
 | T25 |     |  |  |
 | T26 |     |  |  |
 | T27 |     |  |  |

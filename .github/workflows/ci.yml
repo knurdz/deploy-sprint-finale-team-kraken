@@ -34,6 +34,7 @@ jobs:
           VITE_PUBLIC_URL: ${{ vars.PUBLIC_URL || secrets.PUBLIC_URL || vars.IP_PUBLIC_URL || secrets.IP_PUBLIC_URL || vars.DOMAIN_PUBLIC_URL || secrets.DOMAIN_PUBLIC_URL || '' }}
           VITE_FEATURE_SHOW_INSIGHTS: ${{ secrets.FEATURE_SHOW_INSIGHTS || 'false' }}
           VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+          VITE_TURNSTILE_SITE_KEY: ${{ secrets.TURNSTILE_SITE_KEY || vars.TURNSTILE_SITE_KEY || '0x4AAAAAAAplaceholder-replace-me' }}
         run: npm run build
         working-directory: team-site
 
@@ -44,6 +45,7 @@ jobs:
           FEATURE_SHOW_INSIGHTS: ${{ secrets.FEATURE_SHOW_INSIGHTS || 'false' }}
           WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
         run: |
           rm -rf team-site/dist/health team-site/dist/status
           mkdir -p team-site/dist/health team-site/dist/status team-site/dist/api
@@ -62,7 +64,13 @@ jobs:
             EMAIL_CONFIGURED=false
           fi
 
-          printf '{"team":"%s","task":"T01","commitSha":"%s","releaseId":"%s","deployTime":"%s","publicUrl":"%s","branch":"%s","weather":{"provider":"openweather","city":"Colombo","keyExposed":false},"contactForm":{"provider":"web3forms","accessKeyConfigured":%s,"keyExposed":false},"email":{"task":"T16","provider":"resend","configured":%s,"secretRedacted":true,"keyExposed":false}}' \
+          if [ -n "${TURNSTILE_SECRET_KEY:-}" ]; then
+            TURNSTILE_CONFIGURED=true
+          else
+            TURNSTILE_CONFIGURED=false
+          fi
+
+          printf '{"team":"%s","task":"T01","commitSha":"%s","releaseId":"%s","deployTime":"%s","publicUrl":"%s","branch":"%s","weather":{"provider":"openweather","city":"Colombo","keyExposed":false},"contactForm":{"provider":"web3forms","accessKeyConfigured":%s,"keyExposed":false},"email":{"task":"T16","provider":"resend","configured":%s,"secretRedacted":true,"keyExposed":false},"turnstile":{"task":"T24","provider":"cloudflare-turnstile","siteKeyPublic":true,"secretKeyServerOnly":%s,"secretRedacted":true,"allowedHostname":"kraken.deploysprint-finals.knurdz.org"}}' \
             "$TEAM_NAME" \
             "$GITHUB_SHA" \
             "$GITHUB_RUN_ID" \
@@ -71,11 +79,16 @@ jobs:
             "$GITHUB_REF_NAME" \
             "$CONTACT_CONFIGURED" \
             "$EMAIL_CONFIGURED" \
+            "$TURNSTILE_CONFIGURED" \
             > team-site/dist/status/index.html
 
           printf '{"task":"T16","provider":"resend","configured":%s,"secretRedacted":true,"keyExposed":false}' \
             "$EMAIL_CONFIGURED" \
             > team-site/dist/api/email-status
+
+          printf '{"task":"T24","provider":"cloudflare-turnstile","siteKeyPublic":true,"secretKeyServerOnly":%s,"secretRedacted":true,"allowedHostname":"kraken.deploysprint-finals.knurdz.org"}' \
+            "$TURNSTILE_CONFIGURED" \
+            > team-site/dist/api/turnstile-status
 
       - name: Send deploy notification via Resend (T16)
         env:
@@ -83,6 +96,14 @@ jobs:
         run: |
           set -euo pipefail
           node scripts/send-deploy-email.mjs
+        working-directory: team-site
+
+      - name: Verify Turnstile secret key (T24)
+        env:
+          TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+        run: |
+          set -euo pipefail
+          node scripts/verify-turnstile.mjs
         working-directory: team-site
 
       - name: Fetch weather data (server-side only)
