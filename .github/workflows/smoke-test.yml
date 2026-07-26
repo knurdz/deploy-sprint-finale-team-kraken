@@ -1,0 +1,29 @@
+name: Post-Deploy Smoke Tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run smoke tests
+        env:
+          PUBLIC_URL: ${{ vars.PUBLIC_URL }}
+        run: |
+          set -euo pipefail
+          base_url="${PUBLIC_URL:?PUBLIC_URL required}"
+          echo "Checking target: $base_url"
+          curl --fail "$base_url/"
+          curl --fail "$base_url/health"
+          curl --fail "$base_url/status"
+          echo "T19 smoke tests passed"
+          {
+            echo "## T19 Smoke Test Results"
+            echo ""
+            echo "- Target: $base_url"
+            echo "- / : ok"
+            echo "- /health : ok"
+            echo "- /status : ok"
+          } >> "$GITHUB_STEP_SUMMARY"
