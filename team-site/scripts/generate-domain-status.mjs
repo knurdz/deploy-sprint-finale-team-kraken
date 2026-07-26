@@ -2,7 +2,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 
 const domainStatus = {
   task: 'T02',
-  domain: 'kraken.deploysprint-finals.knurdz.org',
+  assignedDomain: 'kraken.deploysprint-finals.knurdz.org',
   recordType: 'A',
   recordName: 'kraken.deploysprint-finals',
   connected: true,
