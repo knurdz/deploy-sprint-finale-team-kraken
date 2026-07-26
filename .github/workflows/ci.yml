@@ -32,6 +32,7 @@ jobs:
           VITE_TEAM_NAME: ${{ vars.TEAM_NAME || secrets.TEAM_NAME || 'Kraken' }}
           VITE_BRANCH: ${{ github.ref_name }}
           VITE_PUBLIC_URL: ${{ vars.PUBLIC_URL || secrets.PUBLIC_URL || vars.IP_PUBLIC_URL || secrets.IP_PUBLIC_URL || vars.DOMAIN_PUBLIC_URL || secrets.DOMAIN_PUBLIC_URL || '' }}
+          VITE_FEATURE_SHOW_INSIGHTS: ${{ secrets.FEATURE_SHOW_INSIGHTS || 'false' }}
           VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: npm run build
         working-directory: team-site
@@ -40,11 +41,13 @@ jobs:
         env:
           TEAM_NAME: ${{ vars.TEAM_NAME || 'KRAKEN' }}
           PUBLIC_URL: ${{ vars.PUBLIC_URL || vars.IP_PUBLIC_URL || '' }}
+          FEATURE_SHOW_INSIGHTS: ${{ secrets.FEATURE_SHOW_INSIGHTS || 'false' }}
           WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: |
           rm -rf team-site/dist/health team-site/dist/status
           mkdir -p team-site/dist/health team-site/dist/status
           printf 'ok' > team-site/dist/health/index.html
+          printf '{"team":"%s","task":"T01","commitSha":"%s","releaseId":"%s","deployTime":"%s","publicUrl":"%s","branch":"%s","weather":{"provider":"openweather","city":"Colombo","keyExposed":false},"features":{"task":"T15","showInsights":%s,"valueRedacted":true}}' \
 
           if [ -n "${WEB3FORMS_ACCESS_KEY:-}" ]; then
             CONTACT_CONFIGURED=true
@@ -59,6 +62,7 @@ jobs:
             "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
             "$PUBLIC_URL" \
             "$GITHUB_REF_NAME" \
+            "$FEATURE_SHOW_INSIGHTS" \
             "$CONTACT_CONFIGURED" \
             > team-site/dist/status/index.html
 
