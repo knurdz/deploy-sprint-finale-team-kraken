@@ -34,7 +34,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T02 |  |  |  |
 | T03 | TBD | /release-candidate/artifact.json | Added deploy-dry-run job in CI that reuses the artifact |
 | T04 |  |  |  |
-| T05 |  |  |  |
+| T05 | (TBD - PR not yet opened) | PUBLIC_URL sourced from GitHub Secret + repo variable, ci.yml already references secrets.PUBLIC_URL fallback, dist/config-status.json shows publicUrlConfigured=true | No raw config values hardcoded in source (verified via git grep); config-status.json exposes only a boolean, never the actual URL value. |
 | T06 | #5 | site-dist artifact with npm ci | Workflow correctly configured |
 | T07 | #6 | /api/weather endpoint & WeatherWidget | Fetched server-side, secret secured |
 | T08 |  |  |  |
