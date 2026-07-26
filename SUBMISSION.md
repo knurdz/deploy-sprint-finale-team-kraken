@@ -36,7 +36,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T04 |  |  |  |
 | T05 |  |  |  |
 | T06 | #5 | site-dist artifact with npm ci | Workflow correctly configured |
-| T07 |  |  |  |
+| T07 | #6 | /api/weather endpoint & WeatherWidget | Fetched server-side, secret secured |
 | T08 |  |  |  |
 | T09 |  |  |  |
 | T10 |  |  |  |
