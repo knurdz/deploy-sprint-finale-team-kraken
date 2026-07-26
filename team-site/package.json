@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "build:ci": "node scripts/gen-status.mjs && tsc --noEmit && vite build && node scripts/generate-domain-status.mjs",
+    "build:ci": "node scripts/gen-status.mjs && tsc --noEmit && vite build && node scripts/generate-domain-status.mjs && node scripts/generate-config-status.mjs",
     "preview": "vite preview",
     "lint": "tsc --noEmit"
   },

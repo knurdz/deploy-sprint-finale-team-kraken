@@ -1,0 +1,47 @@
+name: PR Preview
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: team-site/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: team-site
+
+      - name: Build PR preview
+        run: npm run build
+        working-directory: team-site
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-preview-${{ github.event.pull_request.number }}-${{ github.sha }}
+          path: team-site/dist
+
+      - name: Write preview summary
+        run: |
+          {
+            echo "## T11 PR Preview"
+            echo ""
+            echo "- PR: #${{ github.event.pull_request.number }}"
+            echo "- Commit: ${{ github.sha }}"
+            echo "- Preview artifact: pr-preview-${{ github.event.pull_request.number }}-${{ github.sha }}"
+            echo "- Download it from this workflow run's Artifacts section to view the PR build."
+            echo "- This is a preview build only, kept separate from the production deploy workflow."
+          } >> "$GITHUB_STEP_SUMMARY"
