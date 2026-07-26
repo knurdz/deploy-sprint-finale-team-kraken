@@ -4,19 +4,19 @@ Complete this file on `main` as tasks are completed. Do not paste secrets, priva
 
 ## Team
 
-- Team name:
-- Team members:
-- Live IP URL:
-- Assigned domain URL:
-- Repository URL:
+- Team name: Kraken
+- Team members: Ashinthya, Dineth, Dihini, Uresha
+- Live IP URL: http://4.246.121.59
+- Assigned domain URL: https://kraken.deploysprint-finals.knurdz.org
+- Repository URL: https://github.com/knurdz/deploy-sprint-finale-team-kraken
 
 ## Release Evidence
 
-- Current production commit:
-- Current artifact/image identifier:
-- Current deployment workflow run:
-- Current release manifest path or URL:
-- Notes on live evidence or fallback evidence:
+- Current production commit: (Will be available after next deployment)
+- Current artifact/image identifier: site-dist-<sha>
+- Current deployment workflow run: (Check GitHub Actions)
+- Current release manifest path or URL: http://4.246.121.59/status
+- Notes on live evidence or fallback evidence: /health returns ok, /status returns JSON payload. CI workflow enforces npm ci and npm run build.
 
 ## Score Summary
 
@@ -30,12 +30,12 @@ Use this section for short public notes and links. Full task instructions and ch
 
 | Task | PR | Evidence | Notes |
 | --- | --- | --- | --- |
-| T01 |  |  |  |
+| T01 | #3 | /status and /health endpoints | Live on IP |
 | T02 |  |  |  |
 | T03 |  |  |  |
 | T04 |  |  |  |
 | T05 |  |  |  |
-| T06 |  |  |  |
+| T06 | #5 | site-dist artifact with npm ci | Workflow correctly configured |
 | T07 |  |  |  |
 | T08 |  |  |  |
 | T09 |  |  |  |
