@@ -19,9 +19,11 @@ import { courses } from './data/courses';
 import { deadlineCards } from './data/deadlines';
 import { sprintStats } from './data/stats';
 import { getAverageProgress } from './utils/metrics';
+import { featureFlags } from './utils/featureFlags';
 
 export function App() {
   const averageProgress = getAverageProgress(courses);
+  const flags = featureFlags();
 
   return (
     <main className="shell">
@@ -100,7 +102,7 @@ export function App() {
           ))}
         </section>
 
-        <LearningVelocity courses={courses} />
+        {flags.showInsights && <LearningVelocity courses={courses} />}
 
         <section className="contentGrid">
           <div className="panel" id="courses">

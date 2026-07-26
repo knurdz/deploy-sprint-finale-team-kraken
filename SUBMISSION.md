@@ -44,7 +44,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T12 | #8 | cache: npm + cache-dependency-path in ci.yml | npm ci preserved, lockfile-keyed cache already in place |
 | T13 | #17 | Integrated ReleaseReadiness component & validation script | AI markers removed, validation script passes, build succeeds |
 | T14 |  |  |  |
-| T15 |  |  |  |
+| T15 | TBD | /status JSON features flag | Implemented runtime feature flag for LearningVelocity component via Vite env var |
 | T16 |  |  |  |
 | T17 |  |  |  |
 | T18 |  |  |  |
