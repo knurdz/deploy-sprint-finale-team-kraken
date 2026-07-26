@@ -31,7 +31,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | Task | PR | Evidence | Notes |
 | --- | --- | --- | --- |
 | T01 | #3 | /status and /health endpoints | Live on IP |
-| T02 |  |  |  |
+| T02 | (TBD - PR not yet opened) | A/TXT records live in DNS, HTTP 200 on domain + raw IP, dist/domain-status.json shows domain.connected=true | DNS confirmed via nslookup (A -> 4.246.121.59, TXT -> deploy-sprint-kraken). HTTPS not yet live at time of writing; flagged to organizers as likely infra-side TLS provisioning delay. |
 | T03 |  |  |  |
 | T04 |  |  |  |
 | T05 |  |  |  |
