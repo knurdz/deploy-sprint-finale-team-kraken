@@ -4,12 +4,14 @@ import {
   BookOpen,
   CalendarCheck,
   GitBranch,
+  Mail,
   GraduationCap,
   Search,
   ShieldCheck,
   Users,
 } from 'lucide-react';
 import { WeatherWidget } from './components/WeatherWidget';
+import { ContactForm } from './components/ContactForm';
 import { CourseCard } from './components/CourseCard';
 import { DeadlineBoard } from './components/DeadlineBoard';
 import { LearningVelocity } from './components/LearningVelocity';
@@ -51,6 +53,10 @@ export function App() {
           <a href="#teams">
             <Users size={18} />
             Teams
+          </a>
+          <a href="#contact">
+            <Mail size={18} />
+            Contact
           </a>
         </nav>
 
@@ -119,6 +125,15 @@ export function App() {
           </div>
 
           <DeadlineBoard deadlines={deadlineCards} />
+        </section>
+         <section className="panel" id="contact">
+          <div className="panelHeader">
+            <div>
+              <p className="eyebrow">Support</p>
+              <h2>Contact us</h2>
+            </div>
+          </div>
+          <ContactForm />
         </section>
       </section>
     </main>
