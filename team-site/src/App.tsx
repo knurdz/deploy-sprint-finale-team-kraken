@@ -13,6 +13,7 @@ import { WeatherWidget } from './components/WeatherWidget';
 import { CourseCard } from './components/CourseCard';
 import { DeadlineBoard } from './components/DeadlineBoard';
 import { LearningVelocity } from './components/LearningVelocity';
+import { ReleaseReadiness } from './components/ReleaseReadiness';
 import { StatCard } from './components/StatCard';
 import { courses } from './data/courses';
 import { deadlineCards } from './data/deadlines';
@@ -120,6 +121,8 @@ export function App() {
 
           <DeadlineBoard deadlines={deadlineCards} />
         </section>
+
+        <ReleaseReadiness />
       </section>
     </main>
   );
