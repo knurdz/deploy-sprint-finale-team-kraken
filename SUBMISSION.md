@@ -51,7 +51,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T19 | #25 | .github/workflows/smoke-test.yml checks /, /health, /status and fails on bad response. Debug run (PUBLIC_URI/PUBLIC_URL mismatch): visible in PR #25 checks history. Passing run: https://github.com/knurdz/deploy-sprint-finale-team-kraken/actions/runs/30197818502/job/89782390724?pr=25 | Ran starter as-provided first (failed as designed - PUBLIC_URI required), diagnosed the PUBLIC_URI/PUBLIC_URL name mismatch, fixed it, reran and passed against live site |
 | T20 |  |  |  |
 | T21 |  |  |  |
-| T22 |  |  |  |
+| T22 | TBD | docker-compose.yml + .env.template + Compose validation in docker-build.yml | No secrets committed; .env.template has placeholders only; COMPOSE_PROJECT_NAME=deploy-sprint-kraken |
 | T23 |  |  |  |
 | T24 |  |  |  |
 | T25 |  |  |  |
