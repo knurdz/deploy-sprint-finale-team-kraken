@@ -83,6 +83,12 @@ jobs:
             fi
           fi
 
+      - name: Write config status evidence (T05)
+        env:
+          PUBLIC_URL: ${{ vars.PUBLIC_URL || secrets.PUBLIC_URL || vars.IP_PUBLIC_URL || vars.DOMAIN_PUBLIC_URL || '' }}
+        run: node scripts/generate-config-status.mjs
+        working-directory: team-site
+
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
         with:
