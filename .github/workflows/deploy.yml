@@ -11,9 +11,10 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
-  group: request-organizer-deploy
+  group: deploy-kraken-production
   cancel-in-progress: false
 
 jobs:
