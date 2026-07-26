@@ -58,12 +58,12 @@ jobs:
           OPENWEATHER_CITY: ${{ vars.OPENWEATHER_CITY || 'Colombo' }}
         run: |
           set -euo pipefail
-          mkdir -p team-site/dist/api/weather
+          mkdir -p team-site/dist/api
 
           if [ -z "${OPENWEATHER_API_KEY:-}" ]; then
             echo "OPENWEATHER_API_KEY not set — writing stub response"
             printf '{"task":"T07","provider":"openweather","city":"%s","keyExposed":false,"temperature":30,"description":"clear sky","humidity":70,"windSpeed":3.5,"stub":true}' \
-              "$OPENWEATHER_CITY" > team-site/dist/api/weather/index.html
+              "$OPENWEATHER_CITY" > team-site/dist/api/weather
           else
             WEATHER_JSON=$(curl -sf \
               "https://api.openweathermap.org/data/2.5/weather?q=${OPENWEATHER_CITY}&appid=${OPENWEATHER_API_KEY}&units=metric" || echo "")
@@ -71,7 +71,7 @@ jobs:
             if [ -z "$WEATHER_JSON" ]; then
               echo "OpenWeather API call failed — writing stub"
               printf '{"task":"T07","provider":"openweather","city":"%s","keyExposed":false,"temperature":30,"description":"clear sky","humidity":70,"windSpeed":3.5,"stub":true}' \
-                "$OPENWEATHER_CITY" > team-site/dist/api/weather/index.html
+                "$OPENWEATHER_CITY" > team-site/dist/api/weather
             else
               TEMP=$(echo "$WEATHER_JSON" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['main']['temp'])")
               DESC=$(echo "$WEATHER_JSON" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['weather'][0]['description'])")
@@ -79,7 +79,7 @@ jobs:
               WIND=$(echo "$WEATHER_JSON" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['wind']['speed'])")
               printf '{"task":"T07","provider":"openweather","city":"%s","keyExposed":false,"temperature":%s,"description":"%s","humidity":%s,"windSpeed":%s}' \
                 "$OPENWEATHER_CITY" "$TEMP" "$DESC" "$HUM" "$WIND" \
-                > team-site/dist/api/weather/index.html
+                > team-site/dist/api/weather
             fi
           fi
 
