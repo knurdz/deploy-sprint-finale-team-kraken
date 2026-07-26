@@ -7,7 +7,7 @@ Complete this file on `main` as tasks are completed. Do not paste secrets, priva
 - Team name: Kraken
 - Team members: Ashinthya, Dineth, Dihini, Uresha
 - Live IP URL: http://4.246.121.59
-- Assigned domain URL: https://kraken.deploysprint-finals.knurdz.org
+- Assigned domain URL: http://kraken.deploysprint-finals.knurdz.org
 - Repository URL: https://github.com/knurdz/deploy-sprint-finale-team-kraken
 
 ## Release Evidence

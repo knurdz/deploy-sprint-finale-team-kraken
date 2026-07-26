@@ -408,3 +408,45 @@ h3 {
     white-space: normal;
   }
 }
+
+/* ── Weather Widget ─────────────────────────────────────────── */
+.weatherWidget {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #19241f;
+  color: #f7f3eb;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.weatherInfo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.weatherTemp {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.weatherCity {
+  font-size: 0.72rem;
+  opacity: 0.7;
+}
+
+.weatherMeta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.75;
+  font-size: 0.72rem;
+}
+
+.weatherLoading,
+.weatherError {
+  opacity: 0.6;
+}
