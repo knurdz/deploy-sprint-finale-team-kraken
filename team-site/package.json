@@ -6,16 +6,21 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "build:ci": "node scripts/gen-status.mjs && tsc --noEmit && vite build && node scripts/generate-domain-status.mjs && node scripts/generate-config-status.mjs",
+    "build:ci": "node scripts/gen-status.mjs && tsc --noEmit && vite build && node scripts/generate-domain-status.mjs && node scripts/generate-config-status.mjs && node scripts/generate-auth-status.mjs",
     "preview": "vite preview",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "start": "node server.js"
   },
   "dependencies": {
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "lucide-react": "^1.23.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/express-session": "^1.17.10",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
