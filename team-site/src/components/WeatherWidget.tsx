@@ -26,9 +26,9 @@ export function WeatherWidget() {
     fetch('/api/weather')
       .then((r) => {
         if (!r.ok) throw new Error('Weather unavailable');
-        return r.json();
+        return r.text();
       })
-      .then(setWeather)
+      .then((text) => setWeather(JSON.parse(text)))
       .catch(() => setError('Weather data unavailable'));
   }, []);
 
