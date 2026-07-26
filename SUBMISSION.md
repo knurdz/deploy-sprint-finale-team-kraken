@@ -38,7 +38,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T06 | #5 | site-dist artifact with npm ci | Workflow correctly configured |
 | T07 | #6 | /api/weather endpoint & WeatherWidget | Fetched server-side, secret secured |
 | T08 | #7 | LearningVelocity component & clean rebase | Cherry-picked dda6b34 from task-assets/rebase-feature |
-| T09 |  |  |  |
+| T09 | #16 | PR Diff | Resolved conflict manually keeping both intended changes |
 | T10 |  |  |  |
 | T11 | (TBD - PR not yet opened) | .github/workflows/pr-preview.yml runs on every pull_request, builds team-site, uploads artifact named pr-preview-<PR number>-<commit SHA>, writes GITHUB_STEP_SUMMARY with PR/commit info | Separate workflow file from ci.yml/deploy.yml so preview evidence never touches production deploy logic. |
 | T12 | #8 | cache: npm + cache-dependency-path in ci.yml | npm ci preserved, lockfile-keyed cache already in place |
