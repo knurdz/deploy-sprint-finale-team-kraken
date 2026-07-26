@@ -3,8 +3,6 @@
  * gen-status.mjs
  * Run before `vite build` to write public/status.json
  * with commit SHA, deploy time, release ID, and T01 marker.
- *
- * AI-REVIEW-MARKER: participant must manually remove this marker
  */
 
 import fs from 'fs';
