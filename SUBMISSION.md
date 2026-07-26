@@ -32,7 +32,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | --- | --- | --- | --- |
 | T01 | #3 | /status and /health endpoints | Live on IP |
 | T02 |  |  |  |
-| T03 |  |  |  |
+| T03 | TBD | /release-candidate/artifact.json | Added deploy-dry-run job in CI that reuses the artifact |
 | T04 |  |  |  |
 | T05 |  |  |  |
 | T06 | #5 | site-dist artifact with npm ci | Workflow correctly configured |

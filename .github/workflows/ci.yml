@@ -57,3 +57,17 @@ jobs:
         with:
           name: site-dist-${{ github.sha }}
           path: team-site/dist
+
+  deploy-dry-run:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist-${{ github.sha }}
+          path: ./release-candidate
+
+      - name: Record artifact identity
+        run: |
+          printf '{"task":"T03","artifact":"site-dist-%s"}' "$GITHUB_SHA" > release-candidate/artifact.json
