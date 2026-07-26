@@ -45,7 +45,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T13 | #17 | Integrated ReleaseReadiness component & validation script | AI markers removed, validation script passes, build succeeds |
 | T14 |  |  |  |
 | T15 | TBD | /status JSON features flag | Implemented runtime feature flag for LearningVelocity component via Vite env var |
-| T16 | TBD | /api/email-status shows provider=resend, configured=true, secretRedacted=true | RESEND_API_KEY in GitHub Secrets only, send-deploy-email.mjs sends from alerts@knurdz.org to judges@knurdz.org in CI |
+| T16 | #26 | /api/email-status shows provider=resend, configured=true, secretRedacted=true | RESEND_API_KEY in GitHub Secrets only, send-deploy-email.mjs sends from alerts@knurdz.org to judges@knurdz.org in CI |
 | T17 |  |  |  |
 | T18 |  |  |  |
 | T19 |  |  |  |
