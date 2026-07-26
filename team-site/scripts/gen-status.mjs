@@ -26,9 +26,9 @@ const status = {
 
 fs.mkdirSync(publicDir, { recursive: true });
 fs.writeFileSync(
-  path.join(publicDir, 'status.json'),
+  path.join(publicDir, 'status'),
   JSON.stringify(status, null, 2) + '\n',
   'utf8',
 );
 
-console.log('Generated public/status.json:', status);
+console.log('Generated public/status:', status);
