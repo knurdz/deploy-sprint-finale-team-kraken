@@ -41,7 +41,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T09 |  |  |  |
 | T10 |  |  |  |
 | T11 |  |  |  |
-| T12 |  |  |  |
+| T12 | #8 | cache: npm + cache-dependency-path in ci.yml | npm ci preserved, lockfile-keyed cache already in place |
 | T13 |  |  |  |
 | T14 |  |  |  |
 | T15 |  |  |  |
