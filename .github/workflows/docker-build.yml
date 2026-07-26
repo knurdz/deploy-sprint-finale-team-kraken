@@ -25,4 +25,3 @@ jobs:
             echo "- Image: deploy-sprint/team-site:${{ github.sha }}"
             echo "- Digest: $(docker image inspect deploy-sprint/team-site:${{ github.sha }} --format '{{.Id}}')"
           } >> "$GITHUB_STEP_SUMMARY"
-
