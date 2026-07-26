@@ -2,7 +2,7 @@ name: Request Organizer Deploy
 
 on:
   workflow_run:
-    workflows: ["CI"]
+    workflows: ["CI", "Docker Build"]
     types:
       - completed
     branches:
@@ -90,6 +90,8 @@ jobs:
                   "sha": os.environ["TEAM_SHA"],
                   "branch": os.environ["TEAM_BRANCH"],
                   "source_run_id": os.environ["SOURCE_RUN_ID"],
+                  "image": f"deploy-sprint/team-site:{os.environ['TEAM_SHA']}",
+                  "container_deploy": True,
               },
           }
 

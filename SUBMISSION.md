@@ -43,23 +43,23 @@ Use this section for short public notes and links. Full task instructions and ch
 | T11 | #14 | .github/workflows/pr-preview.yml runs on every pull_request, builds team-site, uploads artifact named pr-preview-<PR number>-<commit SHA>, writes GITHUB_STEP_SUMMARY with PR/commit info | Separate workflow file from ci.yml/deploy.yml so preview evidence never touches production deploy logic. |
 | T12 | #8  | cache: npm + cache-dependency-path in ci.yml | npm ci preserved, lockfile-keyed cache already in place |
 | T13 | #17 | Integrated ReleaseReadiness component & validation script | AI markers removed, validation script passes, build succeeds |
-| T14 |     |  |  |
-| T15 | #23 | /status JSON features flag | Implemented runtime feature flag for LearningVelocity component via Vite env var |
-| T16 |     |  |  |
-| T17 | #26 | Evidence | Added a `deploy.sh` script implementing a blue-green symlink release strategy. It extracts the release to a unique directory, performs a curl health check, and only updates the `current` symlink if the check passes. |
-| T18 |     |  |  |
-| T19 |     |  |  |
-| T20 |     |  |  |
-| T21 |     |  |  |
-| T22 |     |  |  |
-| T23 |     |  |  |
-| T24 |     |  |  |
-| T25 |     |  |  |
-| T26 |     |  |  |
-| T27 |     |  |  |
-| T28 |     |  |  |
-| T29 |     |  |  |
-| T30 |     |  |  |
+| T14 |  |  |  |
+| T15 | TBD | /status JSON features flag | Implemented runtime feature flag for LearningVelocity component via Vite env var |
+| T16 |  |  |  |
+| T17 |  |  |  |
+| T18 | #27 | docker-build.yml & deploy.yml container evidence | Containerized application deployed via GitHub Actions |
+| T19 |  |  |  |
+| T20 |  |  |  |
+| T21 |  |  |  |
+| T22 |  |  |  |
+| T23 |  |  |  |
+| T24 |  |  |  |
+| T25 |  |  |  |
+| T26 |  |  |  |
+| T27 |  |  |  |
+| T28 |  |  |  |
+| T29 |  |  |  |
+| T30 |  |  |  |
 
 ## Public Notes
 
