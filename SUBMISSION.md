@@ -40,10 +40,10 @@ Use this section for short public notes and links. Full task instructions and ch
 | T08 | #7 | LearningVelocity component & clean rebase | Cherry-picked dda6b34 from task-assets/rebase-feature |
 | T09 | #16 | PR Diff | Resolved conflict manually keeping both intended changes |
 | T10 |  |  |  |
-| T11 | (TBD - PR not yet opened) | .github/workflows/pr-preview.yml runs on every pull_request, builds team-site, uploads artifact named pr-preview-<PR number>-<commit SHA>, writes GITHUB_STEP_SUMMARY with PR/commit info | Separate workflow file from ci.yml/deploy.yml so preview evidence never touches production deploy logic. |
+| T11 | #14 | .github/workflows/pr-preview.yml runs on every pull_request, builds team-site, uploads artifact named pr-preview-<PR number>-<commit SHA>, writes GITHUB_STEP_SUMMARY with PR/commit info | Separate workflow file from ci.yml/deploy.yml so preview evidence never touches production deploy logic. |
 | T12 | #8 | cache: npm + cache-dependency-path in ci.yml | npm ci preserved, lockfile-keyed cache already in place |
 | T13 | #17 | Integrated ReleaseReadiness component & validation script | AI markers removed, validation script passes, build succeeds |
-| T14 |  |  |  |
+| T14 | (TBD - PR not yet opened) | team-site/Dockerfile (multi-stage: node:20-alpine build, nginx:alpine serve), .github/workflows/docker-build.yml builds deploy-sprint/kraken:<commit SHA> and records digest in step summary | Verified locally with real Docker: build succeeded, container served the actual site (HTTP 200), build context reduced from 99MB to 1.36KB via .dockerignore |
 | T15 |  |  |  |
 | T16 |  |  |  |
 | T17 |  |  |  |
