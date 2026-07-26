@@ -47,7 +47,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T15 | TBD | /status JSON features flag | Implemented runtime feature flag for LearningVelocity component via Vite env var |
 | T16 |  |  |  |
 | T17 |  |  |  |
-| T18 |  |  |  |
+| T18 | TBD | docker-build.yml & deploy.yml container evidence | Containerized application deployed via GitHub Actions |
 | T19 |  |  |  |
 | T20 |  |  |  |
 | T21 |  |  |  |
