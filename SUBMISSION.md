@@ -65,4 +65,4 @@ Use this section for short public notes and links. Full task instructions and ch
 
 List anything judges should know without exposing credentials or private infrastructure details.
 
-AI-REVIEW-MARKER: participant must manually remove this marker
+
