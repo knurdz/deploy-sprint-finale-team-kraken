@@ -23,10 +23,13 @@ const status = {
 };
 
 fs.mkdirSync(publicDir, { recursive: true });
-fs.writeFileSync(
-  path.join(publicDir, 'status'),
-  JSON.stringify(status, null, 2) + '\n',
-  'utf8',
-);
+const content = JSON.stringify(status, null, 2) + '\n';
 
-console.log('Generated public/status:', status);
+// /status  — required by task (no extension, HTTP 200 with JSON body)
+fs.writeFileSync(path.join(publicDir, 'status'), content, 'utf8');
+
+// /status.json — displays in browser without download (Nginx knows .json MIME type)
+fs.writeFileSync(path.join(publicDir, 'status.json'), content, 'utf8');
+
+console.log('Generated public/status and public/status.json:', status);
+
